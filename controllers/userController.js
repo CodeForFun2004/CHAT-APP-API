@@ -150,4 +150,34 @@ exports.getUserById = async (req, res) => {
     }
   };
   
-  
+  // [GET] /api/users/:id/friends
+exports.getUserFriends = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate('friends', 'username avatar email');
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user.friends);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// [GET] /api/users/:id/suggestions
+exports.getFriendSuggestions = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.params.id);
+    if (!currentUser) return res.status(404).json({ error: 'User not found' });
+
+    const excludeIds = [
+      currentUser._id,
+      ...currentUser.friends
+    ];
+
+    const suggestions = await User.find({ _id: { $nin: excludeIds } })
+      .select('username email avatar');
+
+    res.json(suggestions);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
