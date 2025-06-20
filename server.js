@@ -41,6 +41,10 @@ app.use('/api/friends', friendRoutes);
 const adminRoutes = require('./routes/adminRoutes');
 app.use('/api/admin', adminRoutes);
 
+// Test refresh token
+const protectedRoutes = require('./routes/protected');
+app.use('/api', protectedRoutes); // Gắn /api/protected-test
+
 
 const server = http.createServer(app);
 const io = new Server(server, {

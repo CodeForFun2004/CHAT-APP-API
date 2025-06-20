@@ -7,7 +7,9 @@ const {
   updateUser,
   deleteUser,
   getUserProfile,
-  getCurrentUser
+  getCurrentUser,
+  getUserFriends,
+  getFriendSuggestions
 } = require('../controllers/userController');
 
 const { protect } = require('../middlewares/authMiddleware');
@@ -21,6 +23,8 @@ router.post('/', protect, createUser);
 router.put('/:id', protect, updateUser);
 router.delete('/:id', protect, deleteUser);
 router.get('/:id/profile', protect, getUserProfile);
+router.get('/:id/friends', getUserFriends);
+router.get('/:id/suggestions', getFriendSuggestions);
 
 
 module.exports = router;
