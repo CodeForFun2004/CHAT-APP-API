@@ -16,8 +16,9 @@ exports.createChannel = async (req, res) => {
     });
 
     if (existing) {
-      return res.status(200).json({ message: 'Channel already exists', channel: existing });
+      return res.status(200).json(existing); // ✅ Trả về object channel thay vì message
     }
+    
 
     const newChannel = new ChatChannel({
       members: [userId1, userId2]
