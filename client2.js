@@ -1,10 +1,13 @@
 const { io } = require('socket.io-client');
+const { BASE_URL } = require('./server');
 
 // 🟢 Client 2: giả lập người dùng khác đọc tin nhắn
 const channelId = '684da2f9c90a746385c6cca0';
 const senderId = '684d417cffa547c6b6dc02ce'; // người khác
 
-const socket = io('http://localhost:3000');
+// const socket = io('http://localhost:3000');
+
+const socket = io(BASE_URL);
 
 socket.on('connect', () => {
   console.log(`✅ Client 2 Quốc Huy connected: ${socket.id}`);
