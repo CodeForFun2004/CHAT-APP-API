@@ -40,11 +40,17 @@ app.use('/api/channels', channelRoutes);
 app.use('/api/messages', messageRoutes); // 🔗 Gắn API
 app.use('/api/friends', friendRoutes);
 
+// ✅ Cách đúng: Test API trả về chuỗi "Hello World"
+app.get('/', (req, res) => {
+  res.send('✅ Hello World from Render!');
+});
+
 const adminRoutes = require('./routes/adminRoutes');
 app.use('/api/admin', adminRoutes);
 
 // Test refresh token
 const protectedRoutes = require('./routes/protected');
+const { log } = require('console');
 app.use('/api', protectedRoutes); // Gắn /api/protected-test
 
 const BASE_URL = "https://chat-app-ui-qbo6.onrender.com";
