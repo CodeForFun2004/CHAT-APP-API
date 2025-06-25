@@ -1,3 +1,5 @@
+import { hostname } from 'os';
+
 const express = require('express');
 const http = require('http');
 const mongoose = require('mongoose');
@@ -45,11 +47,11 @@ app.use('/api/admin', adminRoutes);
 const protectedRoutes = require('./routes/protected');
 app.use('/api', protectedRoutes); // Gắn /api/protected-test
 
-
+export const BASE_URL= "https://chat-app-ui-qbo6.onrender.com";
 const server = http.createServer(app);
-const io = new Server(server, {
+ const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin:BASE_URL,
     methods: ["GET", "POST"]
   }
 });
@@ -98,6 +100,9 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+
+server.listen(PORT, '0.0.0.0');
+
+// server.listen(PORT, () => {
+//   console.log(`🚀 Server running on http://localhost:${PORT}`);
+// });

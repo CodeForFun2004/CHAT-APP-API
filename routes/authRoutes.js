@@ -26,6 +26,10 @@ router.post('/logout', protect, logout);
 // Google OAuth
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
+
+
+// Test API Json
+
 router.get(
   '/google/callback',
   passport.authenticate('google', { session: false, failureRedirect: '/login' }),
@@ -38,6 +42,8 @@ router.get(
     req.user.refreshToken = refreshToken;
     await req.user.save();
 
+
+  
     res.json({
       message: 'Đăng nhập Google thành công',
       accessToken,
@@ -49,7 +55,11 @@ router.get(
         avatar: req.user.avatar,
       }
     });
+
   }
 );
+
+
+
 
 module.exports = router;

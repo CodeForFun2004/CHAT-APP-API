@@ -1,10 +1,11 @@
 const { io } = require('socket.io-client');
+const { BASE_URL } = require('./server');
 
 // 🟢 Dữ liệu test
 const channelId = '684da2f9c90a746385c6cca0';
 const senderId = '684d4146ffa547c6b6dc02cc';
 
-const socket = io('http://localhost:3000');
+const socket = io(BASE_URL);
 
 socket.on('connect', () => {
   console.log('✅ Connected to server');
