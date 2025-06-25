@@ -53,7 +53,7 @@ const protectedRoutes = require('./routes/protected');
 const { log } = require('console');
 app.use('/api', protectedRoutes); // Gắn /api/protected-test
 
-const BASE_URL = "https://chat-app-ui-qbo6.onrender.com";
+const BASE_URL = "https://chat-app-ui-ds3i.onrender.com";
 
 const server = http.createServer(app);
  const io = new Server(server, {
