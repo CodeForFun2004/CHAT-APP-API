@@ -1,5 +1,5 @@
 const { io } = require('socket.io-client');
-const { BASE_URL } = require('./server');
+const { BASE_URL } = require('./server.cjs');
 
 // 🟢 Dữ liệu test
 const channelId = '684da2f9c90a746385c6cca0';
