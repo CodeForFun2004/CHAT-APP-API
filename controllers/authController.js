@@ -37,6 +37,7 @@ exports.register = async (req, res) => {
 
 // Đăng nhập
 exports.login = async (req, res) => {
+  console.log('Đang login nè')
   const { usernameOrEmail, password } = req.body;
 
   try {
