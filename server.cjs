@@ -1,4 +1,4 @@
-import { hostname } from 'os';
+const  hostname  = require('os');
 
 const express = require('express');
 const http = require('http');
@@ -47,7 +47,8 @@ app.use('/api/admin', adminRoutes);
 const protectedRoutes = require('./routes/protected');
 app.use('/api', protectedRoutes); // Gắn /api/protected-test
 
-export const BASE_URL= "https://chat-app-ui-qbo6.onrender.com";
+const BASE_URL = "https://chat-app-ui-qbo6.onrender.com";
+
 const server = http.createServer(app);
  const io = new Server(server, {
   cors: {
@@ -106,3 +107,4 @@ server.listen(PORT, '0.0.0.0');
 // server.listen(PORT, () => {
 //   console.log(`🚀 Server running on http://localhost:${PORT}`);
 // });
+module.exports = { BASE_URL }
